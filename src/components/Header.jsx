@@ -27,12 +27,12 @@ const Header = () => {
           </NavItem>
           <NavItem>
             <NavLink to="/drone" className="nav-link">
-              Register Drone
+              Drone
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink to="/medication" className="nav-link">
-              Register Medication
+              Medication
             </NavLink>
           </NavItem>
         </Nav>

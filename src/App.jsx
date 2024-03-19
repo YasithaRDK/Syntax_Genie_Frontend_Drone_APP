@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AvailableDronesPage from "./pages/AvailableDronesPage";
-import RegisterDronePage from "./pages/RegisterDronePage";
-import RegisterMedicationPage from "./pages/RegisterMedicationPage";
+import Home from "./pages/Home";
+import Drone from "./pages/Drone";
+import Medication from "./pages/Medication";
 import LoadMedicationsPage from "./pages/LoadMedicationsPage";
 import Header from "./components/Header";
 
@@ -10,9 +10,9 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<AvailableDronesPage />} />
-        <Route path="/drone" element={<RegisterDronePage />} />
-        <Route path="/medication" element={<RegisterMedicationPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/drone" element={<Drone />} />
+        <Route path="/medication" element={<Medication />} />
         <Route path="/loaded-medication" element={<LoadMedicationsPage />} />
       </Routes>
     </Router>
