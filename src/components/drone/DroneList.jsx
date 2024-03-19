@@ -7,7 +7,7 @@ const DroneList = (drone) => {
     <Card
       className="m-2"
       style={{
-        width: "22rem",
+        width: "25rem",
       }}
     >
       <CardHeader className="d-flex justify-content-between align-items-center">

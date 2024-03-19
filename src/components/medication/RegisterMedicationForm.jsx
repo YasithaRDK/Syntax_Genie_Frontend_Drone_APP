@@ -9,15 +9,18 @@ import {
   CardHeader,
   CardBody,
 } from "reactstrap";
-import axios from "axios";
+import { useRegisterMedicationMutation } from "../../features/medicationSlice";
+import { toast } from "react-toastify";
 
 const RegisterMedicationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     weight: "",
     code: "",
-    image: "",
   });
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const [RegisterMedication, { isLoading }] = useRegisterMedicationMutation();
 
   const handleChange = (e) => {
     setFormData({
@@ -26,17 +29,27 @@ const RegisterMedicationForm = () => {
     });
   };
 
+  const handleImageChange = (e) => {
+    const selectedImageFile = e.target.files[0];
+    setSelectedImage(selectedImageFile);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("weight", formData.weight);
+    data.append("code", formData.code);
+    data.append("image", selectedImage);
     try {
-      const response = await axios.post("/api/drones", formData);
-      console.log(response.data);
+      await RegisterMedication(data).unwrap();
+      toast.success("Drone successfully registered...!");
       setFormData({
-        serialNumber: "",
-        model: "",
-        weightLimit: "",
-        batteryCapacity: "",
+        name: "",
+        weight: "",
+        code: "",
       });
+      setSelectedImage(null);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -90,12 +103,12 @@ const RegisterMedicationForm = () => {
                 name="image"
                 id="image"
                 value={formData.image}
-                onChange={handleChange}
+                onChange={handleImageChange}
                 required
               />
             </FormGroup>
             <Button type="submit" color="primary">
-              Register
+              Submit
             </Button>
           </Form>
         </div>
