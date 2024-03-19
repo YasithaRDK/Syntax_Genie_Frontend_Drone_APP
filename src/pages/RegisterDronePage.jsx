@@ -1,4 +1,4 @@
 const RegisterDronePage = () => {
-  return <div>RegisterDronePage</div>;
+  return <>RegisterDronePage</>;
 };
 export default RegisterDronePage;
