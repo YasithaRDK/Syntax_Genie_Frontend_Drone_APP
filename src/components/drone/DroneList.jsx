@@ -1,4 +1,4 @@
-import { Card, CardBody, CardHeader, CardText, CardTitle } from "reactstrap";
+import { Card, CardBody, CardHeader, CardText } from "reactstrap";
 
 const DroneList = () => {
   return (
@@ -10,12 +10,12 @@ const DroneList = () => {
         width: "25rem",
       }}
     >
-      <CardHeader>Header</CardHeader>
+      <CardHeader>12458654</CardHeader>
       <CardBody>
-        <CardTitle tag="h5">Special Title Treatment</CardTitle>
-        <CardText>
-          With supporting text below as a natural lead-in to additional content.
-        </CardText>
+        <CardText>Model: Lightweight</CardText>
+        <CardText>Weight Limit: 500</CardText>
+        <CardText>Battery: 50% </CardText>
+        <CardText>State: IDLE</CardText>
       </CardBody>
     </Card>
   );
