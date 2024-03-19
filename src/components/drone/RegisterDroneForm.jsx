@@ -9,7 +9,9 @@ import {
   CardHeader,
   CardBody,
 } from "reactstrap";
-import axios from "axios";
+import { useRegisterDroneMutation } from "../../features/droneSlice";
+import { toast } from "react-toastify";
+import Loader from "../Loader";
 
 const RegisterDroneForm = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +20,8 @@ const RegisterDroneForm = () => {
     weightLimit: "",
     batteryCapacity: "",
   });
+
+  const [registerDrone] = useRegisterDroneMutation();
 
   const handleChange = (e) => {
     setFormData({
@@ -29,8 +33,8 @@ const RegisterDroneForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/drones", formData);
-      console.log(response.data);
+      await registerDrone(formData).unwrap();
+      toast.success("Drone successfully registered...!");
       setFormData({
         serialNumber: "",
         model: "",
@@ -58,7 +62,6 @@ const RegisterDroneForm = () => {
                 id="serialNumber"
                 value={formData.serialNumber}
                 onChange={handleChange}
-                required
               />
             </FormGroup>
             <FormGroup>
@@ -69,7 +72,6 @@ const RegisterDroneForm = () => {
                 id="model"
                 value={formData.model}
                 onChange={handleChange}
-                required
               >
                 <option value="">Select Model</option>
                 <option value="Lightweight">Lightweight</option>
@@ -86,7 +88,6 @@ const RegisterDroneForm = () => {
                 id="weightLimit"
                 value={formData.weightLimit}
                 onChange={handleChange}
-                required
               />
             </FormGroup>
             <FormGroup>
@@ -97,7 +98,6 @@ const RegisterDroneForm = () => {
                 id="batteryCapacity"
                 value={formData.batteryCapacity}
                 onChange={handleChange}
-                required
               />
             </FormGroup>
             <Button type="submit" color="primary">

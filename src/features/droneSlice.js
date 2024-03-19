@@ -15,7 +15,15 @@ export const droneApi = createApi({
         method: "GET",
       }),
     }),
+    registerDrone: builder.mutation({
+      query: (data) => ({
+        url: `${DRONE_URL}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAvailableDronesQuery } = droneApi;
+export const { useGetAvailableDronesQuery, useRegisterDroneMutation } =
+  droneApi;
