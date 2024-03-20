@@ -22,8 +22,18 @@ export const droneApi = createApi({
         body: data,
       }),
     }),
+    loadMedication: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `${DRONE_URL}/load-medication/${id}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetAvailableDronesQuery, useRegisterDroneMutation } =
-  droneApi;
+export const {
+  useGetAvailableDronesQuery,
+  useRegisterDroneMutation,
+  useLoadMedicationMutation,
+} = droneApi;

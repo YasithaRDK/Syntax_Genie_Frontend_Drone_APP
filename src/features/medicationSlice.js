@@ -9,6 +9,12 @@ export const medicationApi = createApi({
   baseQuery,
   tagType: ["medications"],
   endpoints: (builder) => ({
+    getAllMedication: builder.query({
+      query: () => ({
+        url: `${MEDICATION_URL}`,
+        method: "GET",
+      }),
+    }),
     registerMedication: builder.mutation({
       query: (data) => ({
         url: `${MEDICATION_URL}`,
@@ -19,4 +25,5 @@ export const medicationApi = createApi({
   }),
 });
 
-export const { useRegisterMedicationMutation } = medicationApi;
+export const { useGetAllMedicationQuery, useRegisterMedicationMutation } =
+  medicationApi;

@@ -59,7 +59,7 @@ const RegisterMedicationForm = () => {
   return (
     <Card className="my-3">
       <CardHeader>
-        <h3 className="text-center">Medication Registration Form</h3>
+        <h3 className="text-center">Drone Registration Form</h3>
       </CardHeader>
       {isLoading ? (
         <Loader />
@@ -75,18 +75,16 @@ const RegisterMedicationForm = () => {
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="weight">Weight:</Label>
+                <Label for="weight">Weight (grams):</Label>
                 <Input
                   type="number"
                   name="weight"
                   id="weight"
                   value={formData.weight}
                   onChange={handleChange}
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -97,7 +95,6 @@ const RegisterMedicationForm = () => {
                   id="code"
                   value={formData.code}
                   onChange={handleChange}
-                  required
                 />
               </FormGroup>
               <FormGroup>
@@ -108,7 +105,6 @@ const RegisterMedicationForm = () => {
                   id="image"
                   value={formData.image}
                   onChange={handleImageChange}
-                  required
                 />
               </FormGroup>
               <Button type="submit" color="primary">

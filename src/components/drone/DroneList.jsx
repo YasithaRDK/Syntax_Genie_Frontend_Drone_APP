@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, CardBody, CardHeader, CardText } from "reactstrap";
 
 const DroneList = (drone) => {
-  const dotColor = drone.drone.state === "IDLE" ? "green" : "#d6d30e";
+  const dotColor = drone.drone.state === "IDLE" ? "green" : "#ffc107";
   return (
     <Card
       className="m-2"
