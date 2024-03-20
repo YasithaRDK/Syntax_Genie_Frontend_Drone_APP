@@ -16,7 +16,8 @@ Create an env file and add the following
 ## Install dependencies
 npm install
 
-## Run Server
+## Run Project
 npm run dev
 
-
+## Backend Repo
+https://github.com/YasithaRDK/Syntax_Genie_WEB_API_Drone_APP
