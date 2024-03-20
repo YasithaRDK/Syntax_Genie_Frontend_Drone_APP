@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useLoadMedicationMutation } from "../../features/droneSlice";
 import { toast } from "react-toastify";
+import { validateLoadedMedicationForm } from "../../utils/validateLoadedMedicationForm";
 
 const LoadMedicationForm = ({ drone, id, refetch }) => {
   const navigate = useNavigate();
@@ -32,6 +33,11 @@ const LoadMedicationForm = ({ drone, id, refetch }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = validateLoadedMedicationForm(formData);
+    if (Object.keys(errors).length > 0) {
+      Object.values(errors).forEach((error) => toast.error(error));
+      return;
+    }
     try {
       await loadMedication({ id, data: formData }).unwrap();
       toast.success("Drone successfully loaded...!");
