@@ -1,5 +1,5 @@
 import { Container } from "reactstrap";
-import DroneList from "../components/drone/DroneList";
+import DroneListCard from "../components/drone/DroneListCard";
 import { useGetAvailableDronesQuery } from "../features/droneSlice";
 import Loader from "../components/Loader";
 
@@ -14,7 +14,7 @@ const Home = () => {
         <div className="d-flex flex-wrap my-3">
           {drones &&
             drones.map((drone, index) => (
-              <DroneList key={index} drone={drone} />
+              <DroneListCard key={index} drone={drone} />
             ))}
         </div>
       )}

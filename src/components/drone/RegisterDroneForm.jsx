@@ -12,6 +12,7 @@ import {
 import { useRegisterDroneMutation } from "../../features/droneSlice";
 import { toast } from "react-toastify";
 import Loader from "../Loader";
+import { validateDroneRegisterForm } from "../../utils/validateDroneRegisterForm";
 
 const RegisterDroneForm = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,11 @@ const RegisterDroneForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = validateDroneRegisterForm(formData);
+    if (Object.keys(errors).length > 0) {
+      Object.values(errors).forEach((error) => toast.error(error));
+      return;
+    }
     try {
       await registerDrone(formData).unwrap();
       toast.success("Drone successfully registered...!");

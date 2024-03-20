@@ -9,9 +9,21 @@ export const droneApi = createApi({
   baseQuery,
   tagType: ["drones"],
   endpoints: (builder) => ({
+    getAllDrones: builder.query({
+      query: () => ({
+        url: `${DRONE_URL}/`,
+        method: "GET",
+      }),
+    }),
     getAvailableDrones: builder.query({
       query: () => ({
         url: `${DRONE_URL}/available-drone`,
+        method: "GET",
+      }),
+    }),
+    getLoadedMedication: builder.query({
+      query: (id) => ({
+        url: `${DRONE_URL}/get-loaded-medication/${id}`,
         method: "GET",
       }),
     }),
@@ -33,6 +45,8 @@ export const droneApi = createApi({
 });
 
 export const {
+  useGetLoadedMedicationQuery,
+  useGetAllDronesQuery,
   useGetAvailableDronesQuery,
   useRegisterDroneMutation,
   useLoadMedicationMutation,

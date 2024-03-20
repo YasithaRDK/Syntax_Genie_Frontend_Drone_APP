@@ -1,33 +1,26 @@
-import { Link } from "react-router-dom";
-import { Button, Card, CardBody, CardHeader, CardText } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
+import { useGetAllDronesQuery } from "../../features/droneSlice";
 
-const DroneList = (drone) => {
-  const dotColor = drone.drone.state === "IDLE" ? "green" : "#ffc107";
+const DroneList = ({ value, onChange }) => {
+  const { data: drones } = useGetAllDronesQuery();
   return (
-    <Card
-      className="m-2"
-      style={{
-        width: "25rem",
-      }}
-    >
-      <CardHeader className="d-flex justify-content-between align-items-center">
-        {drone.drone._id}{" "}
-        <span style={{ color: dotColor }} className="fs-3">
-          ●
-        </span>
-      </CardHeader>
-      <CardBody>
-        <CardText>Model: {drone.drone.model}</CardText>
-        <CardText>Weight Limit: {drone.drone.weightLimit}</CardText>
-        <CardText>Battery: {drone.drone.batteryCapacity}% </CardText>
-        <CardText>State: {drone.drone.state}</CardText>
-      </CardBody>
-      <Link to={`/load-medication/${drone.drone._id}`} className="m-2">
-        <Button color="primary" className="w-100">
-          Load Medication
-        </Button>
-      </Link>
-    </Card>
+    <FormGroup className="w-75">
+      <Input
+        type="select"
+        name="drone_id"
+        id="drone_id"
+        onChange={onChange}
+        value={value}
+      >
+        <option value="">Select Drone</option>
+        {drones &&
+          drones.map((drone, index) => (
+            <option key={index} value={drone._id}>
+              {drone.serialNumber}
+            </option>
+          ))}
+      </Input>
+    </FormGroup>
   );
 };
 export default DroneList;

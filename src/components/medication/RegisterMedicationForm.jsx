@@ -12,6 +12,7 @@ import {
 import { useRegisterMedicationMutation } from "../../features/medicationSlice";
 import { toast } from "react-toastify";
 import Loader from "../Loader";
+import { validateMedicationForm } from "../../utils/validateMedicationForm ";
 
 const RegisterMedicationForm = () => {
   const [formData, setFormData] = useState({
@@ -37,6 +38,11 @@ const RegisterMedicationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = validateMedicationForm(formData);
+    if (Object.keys(errors).length > 0) {
+      Object.values(errors).forEach((error) => toast.error(error));
+      return;
+    }
     const data = new FormData();
     data.append("name", formData.name);
     data.append("weight", formData.weight);
@@ -59,7 +65,7 @@ const RegisterMedicationForm = () => {
   return (
     <Card className="my-3">
       <CardHeader>
-        <h3 className="text-center">Drone Registration Form</h3>
+        <h3 className="text-center">Medication Registration Form</h3>
       </CardHeader>
       {isLoading ? (
         <Loader />

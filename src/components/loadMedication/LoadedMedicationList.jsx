@@ -1,13 +1,6 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-} from "reactstrap";
+import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 
-const LoadedMedicationList = () => {
+const LoadedMedicationList = (medication) => {
   return (
     <Card
       className="m-2"
@@ -15,17 +8,16 @@ const LoadedMedicationList = () => {
         width: "18rem",
       }}
     >
-      <img alt="Sample" src="https://picsum.photos/300/200" />
+      <img
+        alt="Sample"
+        src={`http://localhost:5000/${medication.medication.image}`}
+      />
       <CardBody>
-        <CardTitle tag="h5">Card title</CardTitle>
-        <CardSubtitle className="mb-2 text-muted" tag="h6">
-          Card subtitle
-        </CardSubtitle>
+        <CardTitle tag="h5">{medication.medication.name}</CardTitle>
         <CardText>
-          Some quick example text to build on the card title and make up the
-          bulk of the card‘s content.
+          Weight: {medication.medication.weight} <br /> Code:{" "}
+          {medication.medication.code}
         </CardText>
-        <Button>Button</Button>
       </CardBody>
     </Card>
   );
