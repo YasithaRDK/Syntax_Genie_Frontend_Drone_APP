@@ -1,8 +1,23 @@
-# React + Vite
+# Drone App Frontend
+This  app was created using React.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Functionalities 
+  - able to register a drone.
+  - able to load a drone with medication items.
+  - able to check loaded medication items for a given drone.
+  - able to check available drones for loading.
 
-Currently, two official plugins are available:
+## Usage
+Create an env file and add the following
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### .env
+  - VITE_SERVER_URL=YOUR_SERVER_URL
+
+## Install dependencies
+npm install
+
+## Run Project
+npm run dev
+
+## Backend Repo
+https://github.com/YasithaRDK/Syntax_Genie_WEB_API_Drone_APP
